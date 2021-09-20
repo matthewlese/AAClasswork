@@ -18,6 +18,13 @@ class Array
       end
     end
     accumulator
+
+    #accumulator ||= self.shift
+    #self.each do |ele|
+    #   accumulator = prc.call(accumulator, ele)
+    # end
+    #accumulator
+
   end
 
 end
@@ -26,6 +33,7 @@ end
 # You may wish to use an `is_prime?` helper method.
 
 def is_prime?(num)
+  return false if num < 2
   (2...num).each do |fac|
     return false if num % fac == 0
   end
@@ -47,7 +55,7 @@ end
 # is 1!, the 3rd factorial is 2!, etc.
 
 def factorials_rec(num)  #say we want first 3 i.e. num = 3
-  return [] if num == 0 #want nothing
+  return nil if num <= 0 #want nothing
   return [1] if num == 1 #want first factorial number, 0!
   # say num=2 --> we want the first two factorial numbers, [0!, 1!]
   #           --> need to take the num=1 factorial arr and concat the second factorial number
@@ -62,7 +70,7 @@ class Array
   # [1, 3, 4, 3, 0, 3, 0].dups => { 3 => [1, 3, 5], 0 => [4, 6] }
 
   def dups
-    dupes = Hash.new()
+    dupes = Hash.new() #Hash.new{|h, k| h[k] = []}
     self.each do |ele|
       if self.count(ele) > 1
         indices = []
@@ -80,19 +88,16 @@ class String
   # Write a `String#symmetric_substrings` method that returns an array of 
   # substrings that are palindromes, e.g. "cool".symmetric_substrings => ["oo"]
   # Only include substrings of length > 1.
-  def get_substrings
+  def symmetric_substrings
     substrings = []
     self.each_char.with_index do |char, i|
-      (i...self.length).each { |end_idx| substrings << self[i..end_idx] }
+      (i + 1...self.length).each { |end_idx| substrings << self[i..end_idx] }
     end
-    substrings.select {|substring| substring.length > 1 }
-  end
-
-  def symmetric_substrings
-    self.get_substrings.select do |substring|
+    substrings.select do |substring| 
       substring == substring.reverse
     end
   end
+
 end
 
 class Array
@@ -102,22 +107,21 @@ class Array
   
   def merge_sort(&prc)
     return self if self.size <= 1 #base case: return array given if it already broken down into single-element or empty array
-
+    prc ||= Proc.new {|a, b| a <=> b}
     midpoint = self.length / 2 #define midpoint for splitting
-    left = self[0...midpoint].merge_sort #recursive call on left half
-    right = self[midpoint + 1..-1].merge_sort #recursive call on right half
+    left = self[0...midpoint].merge_sort(&prc) #recursive call on left half
+    right = self[midpoint..-1].merge_sort(&prc) #recursive call on right half
 
-    self.merge(left, right)
+    Array.merge(left, right, &prc)
 
   end
 
   private
   def self.merge(left, right, &prc)
     merged = []
+    until left.empty? || right.empty? #do while both are not empty
 
-    while !left.empty? && !right.empty? #do while both are not empty, could use until either
-
-      if left[0] <= right[0] #first in left comes first sequentially?
+      if prc.call(left[0], right[0]) == -1 #uses proc to compare.  returning -1 means left < right
         merged << left.shift #remove first ele from left and put in merged
       else                    #first in right comes first sequentially?
         merged << right.shift #remove first ele from right and put in merged
