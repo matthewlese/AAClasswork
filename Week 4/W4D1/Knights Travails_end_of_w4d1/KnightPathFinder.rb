@@ -5,18 +5,26 @@ class KnightPathFinder
 
   attr_reader :considered_positions, :board, :start_pos, :root_node
 
+  MOVES = [
+    [1, 2],
+    [1, -2],
+    [-1, 2],
+    [-1, -2],
+    [2, 1],
+    [2, - 1],
+    [-2, -1],
+    [-2, 1]
+  ]
+
   def self.valid_moves(pos)
     valid_moves = []
-    moves = [[1, 2],[1, -2],[-1, 2],[-1, -2],[2, 1],[2, - 1],[-2, -1],[-2, 1]]
-    moves.each do |move| 
+    
+    MOVES.each do |move| 
       new_pos = [move[0] + pos[0], move[1] + pos[1]]
       if new_pos.none? { |ele| ele > 7 || ele < 0 }
         valid_moves << new_pos 
       end
     end
-    return nil if valid_moves.nil?
-    # p @considered_positions
-    # @considered_positions += valid_moves
     valid_moves
   end
 
