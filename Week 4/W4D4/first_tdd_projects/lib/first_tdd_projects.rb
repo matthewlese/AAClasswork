@@ -31,3 +31,33 @@ def my_transpose(matrix)
 
   new_arr
 end
+
+
+def stock_picker(prices)
+  hash = Hash.new
+  (0...prices.size).each do |day1|
+    (day1 + 1...prices.size).each do |day2|
+      hash[[day1, day2]] = prices[day2] - prices[day1]
+    end
+  end
+
+  hash.key(hash.values.max)
+end
+
+#############################################################
+
+class Towers
+  attr_reader :name, :left, :mid, :right
+
+  def initialize(name)
+    @name = name
+    @left = [8, 7, 6, 5, 4, 3, 2, 1]
+    @mid = []
+    @right = []
+
+  end
+
+
+
+
+end

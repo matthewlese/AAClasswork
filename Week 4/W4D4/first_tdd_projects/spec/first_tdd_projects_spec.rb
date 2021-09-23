@@ -55,3 +55,42 @@ describe "my_transpose" do
 
 end
 
+describe 'stock_picker' do 
+
+  it "should accept an array of stock prices" do 
+    expect { stock_picker([20, 10, 40, 25]) }.to_not raise_error
+  end
+
+  it 'should output the most profitable days to buy and sell' do
+    expect(stock_picker([20, 10, 40, 25]) ).to eq([1, 2])
+  end
+
+end
+
+#######################################################################
+
+
+describe Towers do 
+  subject(:towers) {Towers.new('jeff')}
+
+  describe 'initialize' do
+    
+    it 'should set the player name' do 
+      expect( towers.name ).to eq('jeff') 
+    end
+
+    it 'should initialize 3 stacks' do 
+      expect { towers.left}.to_not raise_error
+      expect { towers.mid}.to_not raise_error
+      expect { towers.right}.to_not raise_error
+    end
+
+    it 'should place disk starting order in the left stack' do
+      expect( towers.left).to eq([8, 7, 6, 5, 4, 3, 2, 1])
+    end
+  end
+
+
+
+
+end
