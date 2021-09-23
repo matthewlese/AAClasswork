@@ -54,10 +54,55 @@ class Towers
     @left = [8, 7, 6, 5, 4, 3, 2, 1]
     @mid = []
     @right = []
+  end
+
+  def won?
+    return true if @right == [8, 7, 6, 5, 4, 3, 2, 1]
+  end
+
+  def move(start_stack, end_stack)
+    if start_stack == "L"
+      moving_piece = @left.pop
+    elsif start_stack == "M"
+      moving_piece = @mid.pop
+    else
+      moving_piece = @right.pop
+    end
+
+    if end_stack == "L"
+      @left.push(moving_piece)
+    elsif end_stack == "M"
+      @mid.push(moving_piece)
+    else
+      @right.push(moving_piece)
+    end
 
   end
 
+  def get_input
+    puts "Enter a starting stack: L, M, or R"
+    start_stack = gets.chomp
+    puts "Enter an ending stack: L, M, or R"
+    end_stack = gets.chomp
+    inputs = [start_stack, end_stack]
+  end
 
+  def play
+    until won?
+      input = get_input
+      move(input[0], input[1])
+      display
+    end
+  end
 
+  def display
+    puts "#{left}"
+    puts "#{mid}"
+    puts "#{right}"
+  end
 
 end
+
+game = Towers.new("name")
+game.play
+

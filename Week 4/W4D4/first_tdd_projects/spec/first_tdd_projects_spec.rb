@@ -72,6 +72,8 @@ end
 
 describe Towers do 
   subject(:towers) {Towers.new('jeff')}
+  let(:won_game) {double("Towers", won?: true)}
+  let(:other_game) {double("Towers", won?: false)}
 
   describe 'initialize' do
     
@@ -90,7 +92,22 @@ describe Towers do
     end
   end
 
+  describe 'won?' do
+    context 'when game is won' do
+      it 'should return true' do
+        expect(won_game.won?).to be(true)
+      end
+    end
+    context 'when game is not won' do
+      it 'should return false' do
+        expect(other_game.won?).to eq(false)
+      end
+    end
+  end
 
+  describe 'move' do
+    
+  end
 
 
 end
