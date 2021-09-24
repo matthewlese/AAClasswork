@@ -103,6 +103,6 @@ class Towers
 
 end
 
-game = Towers.new("name")
-game.play
+# game = Towers.new("name")
+# game.play
 

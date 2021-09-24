@@ -106,8 +106,35 @@ describe Towers do
   end
 
   describe 'move' do
-    
+    it 'should accepting start_stack, end_stack' do 
+      expect { towers.move('L', 'M') }.to_not raise_error
+    end
+    it ' should set the moving piece variable' do 
+
+    end
+
+    # before(:each) { towers.move('L', 'M') }
+      it 'should move a disk from one stack to another' do 
+        expect(towers.left).to eq([8, 7, 6, 5, 4, 3, 2])
+        expect(towers.right).to eq([1])
+      end
   end
+
+  # describe 'get_input'  do
+  # end
+
+  describe 'play' do 
+
+  end
+
+  # describe 'display' do 
+  #   it 'should print three stacks in order to the terminal' do 
+  #     expect do
+  #       towers.display
+  #     end.to output(towers.left\n, towers.mid\n, towers.right).to_stdout
+  #   end
+  # end
+
 
 
 end
