@@ -22,7 +22,7 @@ class Node
   end
 
   def inspect
-    "key:#{@key}, val#{@val}, next:#{@next}, prev#{@prev}"
+    "key:#{@key}, val:#{@val}, next:#{@next}, prev:#{@prev}"
   end
 end
 
@@ -54,9 +54,17 @@ include Enumerable
   end
 
   def get(key)
+    curr_node = @head
+    until curr_node == @tail
+      return curr_node.val if curr_node.key == key
+      curr_node = curr_node.next
+    end
+    nil
   end
 
   def include?(key)
+    each { |node| return true if node.key == key }
+    false
   end
 
   def append(key, val)
@@ -68,12 +76,35 @@ include Enumerable
   end
 
   def update(key, val)
+    curr_node = @head
+    until curr_node == @tail
+      if curr_node.key == key
+        curr_node.val = val
+        break
+      end
+      curr_node = curr_node.next
+    end
+    nil
   end
 
   def remove(key)
+    curr_node = @head
+    until curr_node == @tail
+      if curr_node.key == key
+        curr_node.remove
+        break
+      end
+      curr_node = curr_node.next
+    end
+    nil
   end
 
-  def each
+  def each(&prc)
+    curr_node = @head.next
+    until curr_node == @tail
+      prc.call(curr_node)
+      curr_node = curr_node.next
+    end
   end
 
   # uncomment when you have `each` working and `Enumerable` included

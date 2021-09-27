@@ -9,18 +9,24 @@ class HashMap
   end
 
   def include?(key)
+
   end
 
   def set(key, val)
+    id = key.hash % num_buckets
+    @store[id].update(key, val)
   end
 
   def get(key)
+    id = key.hash % num_buckets
+    @store[id].get(key)
   end
 
   def delete(key)
   end
 
   def each
+
   end
 
   # uncomment when you have Enumerable included
