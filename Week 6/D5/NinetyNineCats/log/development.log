@@ -126,3 +126,9 @@ Processing by CatsController#show as HTML
 Completed 200 OK in 353ms (Views: 351.6ms | ActiveRecord: 0.3ms)
 
 
+Started GET "/cat/1" for ::1 at 2021-10-08 15:40:10 -0700
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+        bin/rails db:migrate RAILS_ENV=development:
+
+Started POST "/__better_errors/dd5fdc03dcefc353/variables" for ::1 at 2021-10-08 15:40:11 -0700
