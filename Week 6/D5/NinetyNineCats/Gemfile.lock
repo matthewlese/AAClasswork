@@ -109,7 +109,7 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.8)
-    nokogiri (1.12.5-x86_64-linux)
+    nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
     pg (1.2.3)
     pry (0.14.1)
@@ -201,7 +201,7 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
-  x86_64-linux
+  x86_64-darwin-19
 
 DEPENDENCIES
   annotate
@@ -231,4 +231,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   2.2.27
+   2.2.28

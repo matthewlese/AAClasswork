@@ -33,3 +33,7 @@ Migrating to CreateCats (20211008211657)
   ↳ bin/rails:9
   [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+  [1m[35m (442.6ms)[0m  [1m[35mCREATE DATABASE "NinetyNineCats_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (192.3ms)[0m  [1m[35mCREATE DATABASE "NinetyNineCats_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
