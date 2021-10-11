@@ -9,13 +9,18 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <h1><%= current_user.username %></h1>
-      <%# logout button %>
-    <%else%>
-      <%# login button %>
-    <% end %>
-
+    <header>
+      <% if current_user %>
+        <h1><%= current_user.username %></h1>
+        <form action="<%= session_url %>" method="POST">
+          <input type="hidden" name="_method" method="DELETE">
+          <input type="submit" value="Logout">
+        </form>
+      <%else%>
+        <a href="<%= new_sessions_url %>">Log In!</a>
+        <a href="<%= new_user_url %>">Sign Up!</a>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
