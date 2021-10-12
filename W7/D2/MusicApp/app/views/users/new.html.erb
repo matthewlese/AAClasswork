@@ -1,0 +1,15 @@
+<%# <%= render "form", user: @user, action: new %>
+
+<form action="<%= users_url %>" method="POST"> <%# rails routes for users#create %>
+
+  <label for="email">Email</label>
+  <input type="text" name="user[email]" id="email" value="<%= @user.email %>">
+  <br>
+
+  <label for="password">Password</label>
+  <input type="password" name="user[password]" id="password" value="">
+  <br>
+
+  <input type="submit" value="Create User">
+  
+</form>

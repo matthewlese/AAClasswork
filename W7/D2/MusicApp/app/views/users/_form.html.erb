@@ -1,0 +1,14 @@
+<%# want this form to allow users to sign up with the credentilas they give %>
+<form action="<%= users_url %>" method="POST"> <%# rails routes for users#create %>
+
+  <label for="email">Email</label>
+  <input type="text" name="user[email]" id="email" value="<%= user.email %>">
+  <br>
+
+  <label for="password">Password</label>
+  <input type="password" name="user[password]" id="password" value="">
+  <br>
+
+  <input type="submit" value="Create User">
+  
+</form>

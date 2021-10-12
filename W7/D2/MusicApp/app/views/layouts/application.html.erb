@@ -10,6 +10,35 @@
   </head>
 
   <body>
+
+    <% if logged_in? %> <%# display a sign out button %>
+      <form action="<%= session_url %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE"> <%# hidden input for ending the current session %>
+        <input type="submit" value="Log Out!">
+      </form>
+    <% else%> <%# display sign up and sign in buttons %>
+      <a href="<%= new_user_url %>">Sign Up!</a>
+      <br>
+      <a href="<%= new_session_url %>">Log In!</a>
+    <% end%>
+
+    <% if flash[:messages] %>
+      <ol>
+        <% flash[:messages].each do |message| %>
+          <li class="message"><%= message %></li>
+        <% end %>
+      </ol>
+    <% end %>
+
     <%= yield %>
+
+    <% if flash[:errors] %>
+      <ol>
+        <% flash[:errors].each do |error| %>
+          <li class="error"><%= error %></li>
+        <% end %>
+      </ol>
+    <% end %>
+
   </body>
 </html>

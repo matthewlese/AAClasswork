@@ -1,0 +1,9 @@
+<h1>Look at all these users we have</h1>
+
+<a href="<%= new_user_url %>">Create New User</a>
+
+<ul>
+  <% @users.each do |user|%>
+    <li><%= user.email %></li>
+  <% end %>
+</ul>
