@@ -17,6 +17,16 @@ class User < ApplicationRecord
   before_validation :ensure_session_token #don't try to validate w/o using helper methods
   #could use after_initialize here
 
+  def self.find_by_credentials(email, password)
+    user = User.find_by(email: email) #check db for user instance with matching email
+    if user && user.is_valid_password?(password)
+      #user not nil && user's pw digest matches the arg pw
+      return user
+    else
+      nil
+    end
+  end
+  
   #methods to deal with the session token
   def self.generate_session_token
     SecureRandom::urlsafe_base64
