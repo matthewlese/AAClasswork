@@ -18,6 +18,13 @@ RSpec.describe User, type: :model do
   it { should validate_presence_of(:session_token) }
   it { should validate_length_of(:password).is_at_least(6) }
 
+  describe "uniqueness" do
+    before :each do
+      create(:user)
+    end
+    it { should validate_uniqueness_of(:username) }
+  end
+
   describe "is_valid_password?" do
     let!(:user) { create(:user) }
 
@@ -36,8 +43,8 @@ RSpec.describe User, type: :model do
   
   describe "password encryption" do
     it "does not save passwords to the database" do
-      FactoryBot.create(:user, username: 'Bob')
-      user = User.find_by(username: 'Bob')
+      FactoryBot.create(:user, username: 'Harry Potter')
+      user = User.find_by(username: 'Harry Potter')
       expect(user.password).not_to eq("password")
     end
     it "encrypts the password using BCrypt" do
