@@ -1,0 +1,13 @@
+<% if action == :show %>
+  <a href="<%= bands_url %>">
+    Band Index
+  </a>
+<% elsif action == :index %>
+  <a href="<%= band_url(band) %>">
+    <%= band.name %>'s Show Page
+  </a>
+<% end %>
+
+<ul>
+  <li><%= band.name %></li>
+</ul>
