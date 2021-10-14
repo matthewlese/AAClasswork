@@ -2,8 +2,44 @@
 
 body {
   font-family: 'Nunito', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  background: ivory;
+  background: cornsilk;
+}
+
+.header-logo {
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-logo:hover {
+  background: rebeccapurple;
+}
+
+.header {
+  background: lightcoral;
+  color: cornsilk;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 700px;
+  font-weight: 500;
+}
+
+.header-list {
+  display: flex;
+}
+
+.header-list > li {
+  margin: 10px;
+}
+
+.header-list > li:hover {
+  background: rosybrown;
 }
 
