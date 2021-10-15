@@ -1,2 +1,6 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>All Users</h1>
+<ul>
+  <%  @users.each do |user| %>
+  <li><a href="<%= user_url(user.id) %>"><%= user.username %></a></li>
+  <% end %>
+</ul>
