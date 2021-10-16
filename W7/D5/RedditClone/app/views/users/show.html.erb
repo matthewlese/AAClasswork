@@ -1,2 +1,12 @@
 <h1><%= @user.username %></h1>
+
+<a href="<%= edit_user_url(@user.id) %>">Edit User</a>
+
 <div>placeholder</div>
+
+<!-- 
+<form action="<%= user_url(@user.id) %>" method="GET">
+  <input type="hidden" name="_method" value="PATCH">
+  <button>Edit User</button>
+</form>
+-->

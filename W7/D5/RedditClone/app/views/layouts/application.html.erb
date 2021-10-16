@@ -10,6 +10,21 @@
   </head>
 
   <body>
+    <header>
+      <a href="<%= new_user_url %>">Create User</a>
+
+      <% if current_user %>
+        <%= current_user.username %>
+        <form action="<%= session_url %>" method="POST">
+          <input type="hidden" name="_method" method="DELETE">
+          <button type="submit">Log Out</button>
+        </form>
+      <% else %>
+        <a href="<%= new_session_url %>">Log In</a>
+      <% end %>
+
+    </header>
+
     <%= yield %>
   </body>
 </html>

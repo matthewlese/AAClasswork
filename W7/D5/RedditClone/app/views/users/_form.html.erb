@@ -1,0 +1,17 @@
+<% action_url = @user.persisted? ? user_url(@user.id) : users_url %>
+<% http_method = @user.persisted? ? "PATCH" : "POST" %>
+
+<form class='form' action="<%= action_url %>" method="POST">
+  <input type="hidden" name="_method" value="<%= http_method %>">
+
+  <p>
+    <label for='username'>Username</label>
+    <input id='username' type="text" name="user[username]" value="<%= @user.username %>"/>
+
+    <label>Password
+      <input type="password" name="user[password]"/>
+    </label>
+  </p>
+
+  <input type="submit">
+</form>
