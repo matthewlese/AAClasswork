@@ -42,6 +42,10 @@ class ControllerBase
   # use ERB and binding to evaluate templates
   # pass the rendered html to render_content
   def render(template_name)
+    raise "Already rendered" if already_built_response?
+    render_content(ERB.new("<%= template_name %>").result(binding), 'text/html')
+    # render_content(template_name.result(binding), 'text/html')
+    @already_built_response = true
   end
 
   # method exposing a `Session` object
