@@ -24,4 +24,21 @@ Array.prototype.twoSum = function() {
   return result;
 }
 
-console.log([5, 4, 6, -5, 1, 2, 3, -4].twoSum())
+// console.log([5, 4, 6, -5, 1, 2, 3, -4].twoSum())
+
+//
+Array.prototype.mytranspose = function() {
+  let result = [];
+  for (let j = 0; j < this[0].length; j++){
+    let col = [];
+    for (let i = 0; i < this.length; i++) {
+      col.push(this[i][j]);
+    }
+    result.push(col);
+  }
+  return result;
+}
+
+test = [[1,2,3],[4,5,6],[7,8,9]]
+console.log(test.mytranspose())
+
