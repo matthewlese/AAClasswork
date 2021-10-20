@@ -39,6 +39,6 @@ Array.prototype.mytranspose = function() {
   return result;
 }
 
-test = [[1,2,3],[4,5,6],[7,8,9]]
+let test = [[1,2,3],[4,5,6],[7,8,9]]
 console.log(test.mytranspose())
 
