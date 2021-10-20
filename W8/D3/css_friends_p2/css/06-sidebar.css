@@ -1,0 +1,27 @@
+/* PHASE 0: Sidebar */
+.profile-picture {
+  display: block;
+  margin-top: -20px;
+  position: relative;
+}
+
+.profile-info {
+  margin: 10px 0;
+}
+
+.profile-info > h3 {
+  font-weight: bold;
+}
+
+.profile-info > p {
+  font-family: cursive;
+}
+
+.profile-nav > ul >li:first-child {
+  border-top: 1px solid red;
+}
+
+.profile-nav > ul > li {
+  border-bottom: 1px solid red;
+}
+
