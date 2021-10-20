@@ -9,6 +9,17 @@ if (typeof window === 'undefined'){
  * and two white pieces at [3, 3] and [4, 4]
  */
 function _makeGrid () {
+  // let grid = new Array(8).fill(new Array(8))
+  let grid = new Array(8).fill().map(ele => new Array(8));
+  // for (let i=0; i<grid.length; i++ ) {
+  //   grid[i] = new Array(8);
+  // }
+  grid[3][4] = new Piece('black');
+  grid[4][3] = new Piece('black');
+  grid[3][3] = new Piece('white');
+  grid[4][4] = new Piece('white');
+
+  return grid;
 }
 
 /**
@@ -27,7 +38,14 @@ Board.DIRS = [
 /**
  * Checks if a given position is on the Board.
  */
+// expect(testBoard.isValidPos([9, 1])).toEqual(false);
 Board.prototype.isValidPos = function (pos) {
+  let row = pos[0];
+  let col = pos[1];
+  if (row < 0 || row > 7 || col < 0 || col > 7) {
+    return false;
+  }
+  return true;
 };
 
 /**
@@ -35,6 +53,12 @@ Board.prototype.isValidPos = function (pos) {
  * throwing an Error if the position is invalid.
  */
 Board.prototype.getPiece = function (pos) {
+  if (!this.isValidPos(pos)) {
+    throw Error('Not valid pos!');
+  }
+  let row = pos[0];
+  let col = pos[1];
+  return this.grid[row][col];
 };
 
 /**
