@@ -22,11 +22,22 @@ Array.prototype.myMap = function(arg) {
 function banana(ele) {
   return ele * 2;
 }
-console.log(arr.myMap(banana));
+// console.log(arr.myMap(banana));
 
 function strawberry(ele) {
   return ele * ele
 }
-console.log(arr.myMap(strawberry));
+// console.log(arr.myMap(strawberry));
 
+//myreduce
+Array.prototype.myReduce = function(cb,acc = 0) {
+  let result = acc;
+  if (acc === 0){
+    result = this.shift();
+  }
+  this.myEach(ele => result += cb(ele));
+  return result;
+}
+
+console.log(arr.myReduce(strawberry, 10))
 
