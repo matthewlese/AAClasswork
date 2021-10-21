@@ -30,7 +30,7 @@ class Clock {
 }
 
 // const clock = new Clock();
-
+const readline = require('readline');
 reader = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -38,6 +38,17 @@ reader = readline.createInterface({
 
 function addNumbers(sum, numsLeft, completionCallback) {
   if (numsLeft > 0 ) {
-    const response = reader.question('', callback);
+    const response = reader.question('insert a number', answer => {
+      let newNum = parseInt(answer); // like in Ruby: '8'.to_i # returns 8
+      sum += newNum;
+      --numsLeft;
+      console.log(sum);
+      addNumbers(sum, numsLeft, completionCallback);
+    });
+  } else if (numsLeft === 0) {
+    completionCallback(sum);
+    reader.close();
   }
 }
+
+// addNumbers(5, 5, sum => console.log(`Total Sum: ${sum}`));
