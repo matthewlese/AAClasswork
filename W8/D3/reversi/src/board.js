@@ -116,6 +116,7 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
  * color being flipped.
  */
 Board.prototype.validMove = function (pos, color) {
+  finalResult = false;
   if (this.isOccupied(pos)) { return false };
   let colorPositions = [];
   for (let row=0; row<7; row++) {
@@ -131,14 +132,20 @@ Board.prototype.validMove = function (pos, color) {
     let colDisp = cPos[1] - pos[1];
     let displacement = [rowDisp, colDisp];
     Board.DIRS.forEach(dir => {
-      while (displacement !== [0,0]){
+      let valid = false;
+      while (!valid) {
         displacement[0] = displacement[0] - dir[0];
         displacement[1] = displacement[1] - dir[1];
+        if (displacement[0] === 0 && displacement[1] === 0) { 
+          valid = true; 
+        };
         if (displacement[0] < -7 || displacement[0] > 7 || displacement[1] < -7 || displacement[1] > 7) {
           break;
         }
       }
-      if (displacement === [0,0]) { return true };
+      // if (displacement[0] === 0 && displacement[1] === 0) { return true };
+      // if (displacement == [0,0]) { return true };
+      return true;
     });
   });
   return false;
