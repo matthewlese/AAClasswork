@@ -117,9 +117,38 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
  */
 Board.prototype.validMove = function (pos, color) {
   if (this.isOccupied(pos)) { return false };
-  if (this.getPiece(pos).color === color) { return false };
+  let colorPositions = [];
+  for (let row=0; row<7; row++) {
+    for (let col=0; col<7; col++) {
+      let tempPos = [row, col];
+      if (this.isOccupied(tempPos) && this.getPiece(tempPos).color === color) {
+        colorPositions.push(tempPos);
+      }
+    }
+  }
+  colorPositions.forEach(cPos => {
+    let rowDisp = cPos[0] - pos[0];
+    let colDisp = cPos[1] - pos[1];
+    let displacement = [rowDisp, colDisp];
+    Board.DIRS.forEach(dir => {
+      while (displacement !== [0,0]){
+        displacement[0] = displacement[0] - dir[0];
+        displacement[1] = displacement[1] - dir[1];
+        if (displacement[0] < -7 || displacement[0] > 7 || displacement[1] < -7 || displacement[1] > 7) {
+          break;
+        }
+      }
+      if (displacement === [0,0]) { return true };
+    });
+  });
+  return false;
+}
 
-};
+/* Board.DIRS = [
+  [ 0,  1], [ 1,  1], [ 1,  0],
+  [ 1, -1], [ 0, -1], [-1, -1],
+  [-1,  0], [-1,  1]
+]; */
 
 /**
  * Adds a new piece of the given color to the given position, flipping the
