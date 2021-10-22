@@ -104,7 +104,7 @@ function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop) {
 let outerBubbleSortLoop = function () {
   console.log('OUTERBUBBLESORT')
 }
-let arr = [2,3,1,6,5,4]
+let arr = [2,3,1]
 innerBubbleSortLoop(arr, 0, true, outerBubbleSortLoop)
 // Once you're done testing innerBubbleSortLoop, write outerBubbleSortLoop.
 // Once you're done testing outerBubbleSortLoop, write absurdBubbleSort.
