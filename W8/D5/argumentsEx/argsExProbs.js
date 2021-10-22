@@ -3,9 +3,9 @@
 //   return args.reduce((acc, ele) => acc + ele);
 // }
 
-function sum(...args) {
-  return args.reduce((acc, ele) => acc + ele);
-}
+// function sum(...args) {
+//   return args.reduce((acc, ele) => acc + ele);
+// }
 
 // console.log(sum(1, 2, 3, 4, 5));
 
@@ -63,23 +63,38 @@ Function.prototype.myBind = function (ctx, ...rest) {
 // Markov says meow to Ned!
 // true
 
-// bind time args are "meow" and "Kush", no call time args
-markov.says.myBind(pavlov, "meow", "Kush")();
-// Pavlov says meow to Kush!
-// true
+// // bind time args are "meow" and "Kush", no call time args
+// markov.says.myBind(pavlov, "meow", "Kush")();
+// // Pavlov says meow to Kush!
+// // true
 
-// no bind time args (other than context), call time args are "meow" and "a tree"
-markov.says.myBind(pavlov)("meow", "a tree");
-// Pavlov says meow to a tree!
-// true
+// // no bind time args (other than context), call time args are "meow" and "a tree"
+// markov.says.myBind(pavlov)("meow", "a tree");
+// // Pavlov says meow to a tree!
+// // true
 
-// bind time arg is "meow", call time arg is "Markov"
-markov.says.myBind(pavlov, "meow")("Markov");
-// Pavlov says meow to Markov!
-// true
+// // bind time arg is "meow", call time arg is "Markov"
+// markov.says.myBind(pavlov, "meow")("Markov");
+// // Pavlov says meow to Markov!
+// // true
 
-// no bind time args (other than context), call time args are "meow" and "me"
-const notMarkovSays = markov.says.myBind(pavlov);
-notMarkovSays("meow", "me");
-// Pavlov says meow to me!
-// true
+// // no bind time args (other than context), call time args are "meow" and "me"
+// const notMarkovSays = markov.says.myBind(pavlov);
+// notMarkovSays("meow", "me");
+// // Pavlov says meow to me!
+// // true
+
+function curriedSum(numArgs) {
+  let numbers = [];
+  return function _curriedSum(num) {
+    numbers.push(num);
+    if (numbers.length === numArgs) {
+      return numbers.reduce((acc, ele) => acc + ele);
+    } else {
+      return _curriedSum
+    }
+  }
+}
+
+const sum = curriedSum(4);
+console.log(sum(5)(30)(20)(1)); // => 56
