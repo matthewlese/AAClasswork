@@ -96,5 +96,56 @@ function curriedSum(numArgs) {
   }
 }
 
-const sum = curriedSum(4);
-console.log(sum(5)(30)(20)(1)); // => 56
+// const sum = curriedSum(4);
+// console.log(sum(5)(30)(20)(1)); // => 56
+
+
+// Function.prototype.curry = function (ctx, numArgs) {
+//   let fnc = this;
+//   let numbers = [];
+//   return function _curry (...nums) {
+//     numbers = numbers.concat(nums);
+//     if (numbers.length === numArgs) {
+//       return fnc.apply(ctx, numbers)
+//       // return numbers.reduce((acc, ele) => acc + ele);
+//     } else {
+//       return _curry;
+//     }
+//   };
+// };
+
+
+Function.prototype.curry = function (numArgs, ...nums) {
+  // let that = this;
+  let fnc = this;
+  let numbers = nums;
+  return function _curry(...nums) {
+    numbers = numbers.concat(nums);
+    if (numbers.length === numArgs) {
+      return fnc.apply(this, numbers)
+      // return numbers.reduce((acc, ele) => acc + ele);
+    } else {
+      return _curry;
+    }
+  };
+};
+
+// console.log(sumThree.curry(this, 3) (4,20,6));
+// console.log(sumThree.curry(this, 3,4,20,6)());
+// console.log(sumThree.curry(this, 3,4)(20,6));
+console.log(sumThree.curry(3)(4,20)(6));
+
+function sumThree(num1, num2, num3) {
+  return num1 + num2 + num3;
+}
+
+// sumThree(4, 20, 6); // == 30
+
+// // you'll write `Function#curry`!
+// let f1 = sumThree.curry(3); // tells `f1` to wait until 3 arguments are given before running `sumThree`
+// f1 = f1(4); // [Function]
+// f1 = f1(20); // [Function]
+// f1 = f1(6); // = 30
+
+// // or more briefly:
+// console.log(sumThree.curry(3)(4)(20)(6)); // == 30
