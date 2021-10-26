@@ -1,7 +1,9 @@
 class View {
   constructor(game, el) {}
 
-  setupBoard() {}
+  setupBoard() {
+    
+  }
   
   bindEvents() {}
 
@@ -10,5 +12,6 @@ class View {
   makeMove(square) {}
 
 }
+
 
 module.exports = View;
