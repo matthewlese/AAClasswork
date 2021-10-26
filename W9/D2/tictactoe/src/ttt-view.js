@@ -1,5 +1,10 @@
 class View {
-  constructor(game, el) {}
+  constructor(game, el) {
+    let setup = this.setupBoard();
+    const figure = document.querySelector('.ttt');
+    // console.log(figure);
+    figure.appendChild(setup);
+  }
 
   setupBoard() {
     const grid = document.createElement('ul'); 
@@ -26,12 +31,20 @@ class View {
         square.style.backgroundColor = "grey"; 
       })
     })
+    return grid;
   }
 
   
-  bindEvents() {}
+  bindEvents() {
+    const squares = document.querySelectorAll(".square");
+    squares.forEach(square => {
+      square.addEventListener('click', handleClick)
+    })
+  }
 
-  handleClick(e) {}
+  handleClick(e) {
+
+  }
 
   makeMove(square) {}
 

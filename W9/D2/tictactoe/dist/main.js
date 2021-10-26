@@ -15,7 +15,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\")\nconst Game = __webpack_require__(/*! ../ttt_node/game.js */ \"./ttt_node/game.js\")\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  // Your code here\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\")\nconst Game = __webpack_require__(/*! ../ttt_node/game.js */ \"./ttt_node/game.js\")\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  const figure = document.getElementsByClassName(\"ttt\");\n  let newGame = new Game();\n  new View(newGame, figure);\n  \n});\n\nlet game1 = new Game();\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -25,7 +25,7 @@ eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\
   \*************************/
 /***/ ((module) => {
 
-eval("\n\nclass View {\n  constructor(game, el) {}\n\n  setupBoard() {}\n  \n  bindEvents() {}\n\n  handleClick(e) {}\n\n  makeMove(square) {}\n\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, el) {\n    let setup = this.setupBoard();\n    const figure = document.querySelector('.ttt');\n    console.log(figure);\n    figure.appendChild(setup);\n  }\n\n  setupBoard() {\n    const grid = document.createElement('ul'); \n    for (let i = 1; i <= 9; i++) {\n      let li = document.createElement('li');\n      li.setAttribute('data-row', Math.floor(i / 3)); \n      li.setAttribute('data-col', (i % 3)); \n      li.style.borderStyle = \"solid\";\n      li.style.backgroundColor = \"grey\";\n      li.classList.add('square');\n      grid.appendChild(li); \n    }\n    grid.style.display = \"flex\"; //flex gives fixed width \n    grid.style.flexWrap = \"wrap\";\n\n    //Create event listener for hover:\n    const squares = document.querySelectorAll('.square'); \n    squares.forEach(square => {\n      square.addEventListener('mouseover', () => {\n        square.style.backgroundColor = \"yellow\"; \n      })\n      //accounting for when a user stops hovering:\n      square.addEventListener('mouseout', () => {\n        square.style.backgroundColor = \"grey\"; \n      })\n    })\n    return grid;\n  }\n\n  \n  bindEvents() {\n    const squares = document.querySelectorAll(\".square\");\n    squares.forEach(square => {\n      square.addEventListener('click', handleClick)\n    })\n  }\n\n  handleClick(e) {\n    \n  }\n\n  makeMove(square) {}\n\n}\n\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ }),
 
