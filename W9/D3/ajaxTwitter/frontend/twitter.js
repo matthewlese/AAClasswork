@@ -1,12 +1,21 @@
 const FollowToggle = require("./follow_toggle");
+// require(FollowToggle)
 
-require(FollowToggle)
+$(() => {
+  const buttons = $('button.follow-toggle'); //jQuery collection
+  
+  buttons.each((i, button) => { //gives index, html ele
+    let newButton = new FollowToggle($(button)); // 
 
-$(() => alert('DOM is fully loaded'))
-// $(document).ready(() => alert('DOM is fully loaded'))
+    const setEventListeners = () => {
+      $('.follow-toggle').on('submit', e => {
+        e.preventDefault();
+        newButton.handleClick();
+      })
+    }
+    $(setEventListeners);
+  })
 
-const buttons = $('button.follow-toggle');
 
-buttons.each( button => {
-  new FollowToggle(button); // do we need to save?
 })
+
