@@ -1,11 +1,11 @@
 import React from "react"
-import Clock from "./clock.jsx"
-const Widgets = ()=>{
+import Clock from "./clock"
+
+const Widget = ()=>{
   return (
     <div>
       <Clock/>
-
     </div>
   )
 }
-export default Widgets;
+export default Widget;

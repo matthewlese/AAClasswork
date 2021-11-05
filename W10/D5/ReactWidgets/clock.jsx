@@ -1,15 +1,29 @@
 import React from "react"
 
-class Clock  {
-  constructor(props) {
+class Clock extends React.Component {
+  constructor(props) { //first
     super(props)
+    this.state = {
+      date: 0
+    }
+    this.tick = this.tick.bind(this)
   }
 
+  tick() {
+    this.setState({date: this.state.date + 1})
+    // this.props.tick()
+  }
+
+  
   render(){
     return (
-      <h1>Our Clock</h1>
-    )
+      <div>Our Clock</div> //second
+      )
+    }
+
+  componentDidMount() { // third
+    setInterval(this.tick(), 1000)
   }
 }
 
-export default Clock 
+export default Clock
