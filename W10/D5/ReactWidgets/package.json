@@ -1,8 +1,7 @@
 {
-  "name": "ReactWidgets",
+  "name": "react_widgets",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "widgets.jsx",
   "scripts": {
     "start": "webpack --mode=development --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,5 +20,6 @@
   },
   "devDependencies": {
     "webpack-cli": "^4.9.1"
-  }
+  },
+  "description": ""
 }
