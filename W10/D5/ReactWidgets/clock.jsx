@@ -1,6 +1,6 @@
 import React from "react"
 
-class Clock  {
+class Clock {
   constructor(props) {
     super(props)
   }
