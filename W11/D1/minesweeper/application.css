@@ -1,3 +1,19 @@
 .row {
   display: flex;
 }
+
+.tile{
+  width: 15px;
+  height: 15px;
+  /* border: 1px solid black; */
+  padding: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: outset;
+  cursor: pointer;
+}
+
+.tile.explored{
+  border-style: inset;
+}
