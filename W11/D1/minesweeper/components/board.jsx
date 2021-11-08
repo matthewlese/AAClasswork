@@ -20,7 +20,7 @@ export default class Board extends React.Component{
 
   rowTiles(row,i){
     return row.map((tile,j)=>{
-      return (<Tile key={j} tileObj={}/>)
+      return (<Tile key={j} tileObj={tile} updateGame={this.props.updateGame}/>)
     })
   }
 
