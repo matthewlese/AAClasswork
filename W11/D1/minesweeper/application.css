@@ -3,9 +3,8 @@
 }
 
 .tile{
-  width: 15px;
-  height: 15px;
-  /* border: 1px solid black; */
+  width: 25px;
+  height: 25px;
   padding: 1px;
   display: flex;
   align-items: center;
@@ -16,4 +15,38 @@
 
 .tile.explored{
   border-style: inset;
+}
+
+.modal-content {
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  top:50%;
+  left: 50%;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  background: white;
+}
+
+.modal-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: rgba(0,0,0,0.8);
+}
+
+.modal-button {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+  z-index: 3;
+}
+
+h2 {
+  text-align: center;
 }

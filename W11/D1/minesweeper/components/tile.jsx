@@ -3,7 +3,6 @@ import React from 'react'
 export default class Tile extends React.Component{
   constructor(props) {
     super(props)
-    // console.log(this.props)
     this.handleClick = this.handleClick.bind(this);
   }
   
@@ -26,8 +25,7 @@ export default class Tile extends React.Component{
       } 
     } else if(this.props.tileObj.flagged){
       className += ' flagged'
-      contentCode = 'F'
-      //&#128681
+      contentCode = String.fromCodePoint(0x1F6A9)
     }
 
 
