@@ -19,9 +19,7 @@ export default class Tile extends React.Component{
     if (this.props.tileObj.explored){
       if (this.props.tileObj.bombed) {
         className += ' bombed'
-        contentCode = '\u{1F4A3}'
-        // contentCode = '&#128163'
-        // content = '\u1F4A3'
+        contentCode = String.fromCodePoint(0x1f4a3)
       } else if (this.props.tileObj.explored) {
         className += ' explored'
         contentCode = this.props.tileObj.adjacentBombCount()
