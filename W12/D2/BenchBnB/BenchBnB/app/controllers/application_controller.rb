@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_signed_in
-    redirect_to api_session_url unless signed_in?
+    render json: ['You must be signed in to complete that action.'] unless signed_in?
   end
 
 end

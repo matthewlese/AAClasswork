@@ -5,7 +5,7 @@ class Api::SessionsController < ApplicationController
     @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
     if @user 
       sign_in(@user)
-      render json: show
+      render :template => "api/users/show"
     else 
       render json: @user.error.full_messages, status: 401
     end
