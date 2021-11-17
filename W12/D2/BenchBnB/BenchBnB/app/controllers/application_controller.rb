@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_signed_in
-    redirect_to new_session_url unless signed_in?
+    redirect_to api_session_url unless signed_in?
   end
 
 end
