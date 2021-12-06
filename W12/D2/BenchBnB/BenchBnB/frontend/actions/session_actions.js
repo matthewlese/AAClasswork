@@ -20,12 +20,14 @@ export const receiveErrors = errors => ({
 
 export const signup = user => dispatch => (
   postUser(user)
-    .then(user => dispatch(receiveCurrentUser(user)))
+    .then(user => dispatch(receiveCurrentUser(user)),
+          errors => dispatch(receiveErrors(errors.responseJSON)))
 )
 
 export const login = user => dispatch => (
   postSession(user)
-    .then(user => dispatch(receiveCurrentUser(user)))
+    .then(user => dispatch(receiveCurrentUser(user)),
+          errors => dispatch(receiveErrors(errors.responseJSON)))
 )
 
 export const logout = () => dispatch => (
